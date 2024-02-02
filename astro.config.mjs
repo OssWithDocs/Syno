@@ -8,20 +8,14 @@ import preact from '@astrojs/preact'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://syno.ossdocs.org',
   prefetch: {
     prefetchAll: true
   },
+  site: 'https://syno.ossdocs.org',
   integrations: [
     starlight({
       plugins: [starlightLinksValidator()],
-      social: {
-        github: 'https://github.com/OssWithDocs/Syno/'
-      },
-      editLink: {
-        baseUrl: 'https://github.com/OssWithDocs/Syno/edit/main/'
-      },
-      title: 'G6 Docs',
+      title: 'Syno Docs',
       defaultLocale: 'root',
       locales: {
         root: {
@@ -39,14 +33,20 @@ export default defineConfig({
           lang: 'zh-CN'
         }
       },
+      components: {
+        Head: './src/components/Head.astro'
+      },
       customCss: [
         './src/styles/custom.css',
         './node_modules/pretendard/dist/web/static/pretendard.css',
         './src/styles/headings.css',
         './src/styles/linking.css'
       ],
-      components: {
-        Head: './src/components/Head.astro'
+      social: {
+        github: 'https://github.com/OssWithDocs/Syno/'
+      },
+      editLink: {
+        baseUrl: 'https://github.com/OssWithDocs/Syno/edit/main/'
       }
     }),
     compress({
